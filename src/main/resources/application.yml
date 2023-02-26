@@ -1,0 +1,16 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.jdbc.batch_size: 20
+      hibernate.cache.use_query_cache: false
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_structured_entries: false
+      hibernate.cache.use_minimal_puts: false
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=GroceryStore;encrypt=true;trustServerCertificate=true;
+    username: sa
+    password: 110401
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
