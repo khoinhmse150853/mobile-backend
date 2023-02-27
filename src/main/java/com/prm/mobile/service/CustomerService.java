@@ -7,4 +7,6 @@ public interface CustomerService {
     CustomerDto addCustomer(CustomerDto customerDto);
 
     Customer getCustomerById(String userName);
+
+    CustomerDto findUserByPasswordAndEmial(String email, String password);
 }

@@ -6,10 +6,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/customer")
@@ -21,5 +18,11 @@ public class CustomerController {
     @PostMapping
     public ResponseEntity<CustomerDto> createCustomer(@Valid @RequestBody CustomerDto customerDto) {
         return new ResponseEntity<>(customerService.addCustomer(customerDto), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/login")
+    public ResponseEntity<CustomerDto> loginCustomer(@RequestParam String email,
+                                                     @RequestParam String password) {
+        return new ResponseEntity<>(customerService.findUserByPasswordAndEmial(email, password), HttpStatus.OK);
     }
 }

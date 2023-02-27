@@ -12,5 +12,5 @@ spring:
   datasource:
     url: jdbc:sqlserver://localhost:1433;databaseName=GroceryStore;encrypt=true;trustServerCertificate=true;
     username: sa
-    password: 110401
+    password: 1010
     driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver

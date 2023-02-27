@@ -3,6 +3,7 @@ package com.prm.mobile.service.impl;
 import com.prm.mobile.dto.CustomerDto;
 import com.prm.mobile.entity.Customer;
 import com.prm.mobile.exception.ExistedEntityException;
+import com.prm.mobile.exception.ResourceNotFoundException;
 import com.prm.mobile.repository.CustomerRepository;
 import com.prm.mobile.service.CustomerService;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +35,19 @@ public class CustomerServiceImp implements CustomerService {
     public Customer getCustomerById(String userName) {
         return customerRepository.findById(userName)
                 .orElse(null);
+    }
+    @Override
+    public CustomerDto findUserByPasswordAndEmial(String email, String password) {
+        if (email.isEmpty() || password.isEmpty()) {
+            throw new ResourceNotFoundException("Email or Pssword is empty", "400");
+        }
+
+        Customer customer = customerRepository.findByEmailAndPassword(email, password);
+        if (customer == null) {
+            throw new ResourceNotFoundException("Customer not found", "400");
+        }
+
+        return mapToDTO(customer);
     }
 
     private CustomerDto mapToDTO(Customer customer) {
