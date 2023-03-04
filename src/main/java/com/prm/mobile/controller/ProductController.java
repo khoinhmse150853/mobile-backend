@@ -22,4 +22,9 @@ public class ProductController {
     public ResponseEntity<List<ProductDto>> getPopularProducts() {
         return new ResponseEntity<>(productService.getPopularProduct(), HttpStatus.OK);
     }
+
+    @GetMapping("/recommended")
+    public ResponseEntity<List<ProductDto>> getRecommendedProducts() {
+        return new ResponseEntity<>(productService.getRecommendedProduct(), HttpStatus.OK);
+    }
 }
