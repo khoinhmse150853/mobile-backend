@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,5 +27,10 @@ public class ProductController {
     @GetMapping("/recommended")
     public ResponseEntity<List<ProductDto>> getRecommendedProducts() {
         return new ResponseEntity<>(productService.getRecommendedProduct(), HttpStatus.OK);
+    }
+
+    @GetMapping("/{categoryId}")
+    public ResponseEntity<List<ProductDto>> getProductsByCategory(@PathVariable(name = "categoryId") int id) {
+        return new ResponseEntity<>(productService.getProductByCategory(id), HttpStatus.OK);
     }
 }

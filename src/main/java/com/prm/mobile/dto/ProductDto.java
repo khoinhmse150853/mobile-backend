@@ -27,5 +27,7 @@ public class ProductDto {
 
     private int rating;
 
+    private int categoryId;
+
     private String productType;
 }

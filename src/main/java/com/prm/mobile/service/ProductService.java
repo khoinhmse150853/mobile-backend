@@ -8,4 +8,6 @@ public interface ProductService {
     List<ProductDto> getPopularProduct();
 
     List<ProductDto> getRecommendedProduct();
+
+    List<ProductDto> getProductByCategory(int id);
 }

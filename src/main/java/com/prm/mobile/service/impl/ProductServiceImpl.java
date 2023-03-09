@@ -41,6 +41,17 @@ public class ProductServiceImpl implements ProductService {
         return products.stream().map(this::mapToDTO).toList();
     }
 
+    @Override
+    public List<ProductDto> getProductByCategory(int id) {
+        List<Product> products = productRepository.findByCategoryId(id);
+
+        if (products.isEmpty()) {
+            throw new ResourceNotFoundException("400", "Products not found");
+        }
+
+        return products.stream().map(this::mapToDTO).toList();
+    }
+
     private ProductDto mapToDTO(Product product) {
         return mapper.map(product, ProductDto.class);
     }
