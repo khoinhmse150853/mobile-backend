@@ -10,4 +10,6 @@ public interface ProductService {
     List<ProductDto> getRecommendedProduct();
 
     List<ProductDto> getProductByCategory(int id);
+
+    ProductDto getProductById(int productId);
 }
