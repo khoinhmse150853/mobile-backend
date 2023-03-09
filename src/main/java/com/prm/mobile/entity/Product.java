@@ -31,5 +31,7 @@ public class Product {
 
     private int rating;
 
+    private int categoryId;
+
     private String productType;
 }
